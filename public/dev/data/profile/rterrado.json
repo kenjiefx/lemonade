@@ -1,0 +1,17 @@
+{
+	"id": "1",
+	"username": "rterrado",
+	"firstName": "Kenjie",
+	"lastName": "Terrado",
+	"email": "terradokenjie@gmail.com",
+	"primaryPhotos":{
+		"profile":null,
+		"cover":null
+	},
+	"about": {
+		"me": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+		"work": [
+			"Engineer"
+		]
+	}
+}

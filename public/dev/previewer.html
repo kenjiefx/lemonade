@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Module Previewer</title>
+    <link rel="stylesheet" href="/app/global.css">
+    <link rel="stylesheet" href="/venta/app.css">
+    <link rel="stylesheet" href="/dev/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kenjiefx/strawberry-js/dist/strawberry.v1.0.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/app/main.js"></script>
+    <!--Font Declarations-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;700;800&family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <app xscope="previewer">
+      <section id="loader" class="loader-container">
+        <div class="loading-container-wrapper">
+          <img class="loader-spinner-icon" src="https://cdn.shopify.com/s/files/1/0560/7466/6159/files/spinner.gif?v=1646281504">
+        </div>
+      </section>
+      <main id="main">
+        <div class="preview-wrapper">
+          <section xcomponent="preview" class="preview-container"></section>
+        </div>
+      </main>
+    </app>
+    <script type="text/javascript">
+      app.scope('previewer',['presets,modules'],function($scope,AjaxSvc,UserSvc){
+
+        let Params = new URLSearchParams(window.location.search);
+
+        let getUser = function(){
+          let user = Params.get('user');
+          if (null===user) user = 'rterrado';
+          return user;
+        }
+
+        let getView = function(){
+          let module = Params.get('view');
+          if (null===module) module = 'page-error';
+          return '/modules/'+module;
+        }
+
+        $scope.preview = getView()+'.htm';
+
+        // Loads in user data
+        AjaxSvc.get({
+          url:'/dev/data/profile/'+getUser()+'.json',
+          success:function(response){
+            $scope.UserSvc = new UserSvc(response);
+            AjaxSvc.get({
+              url:'/dev/data/settings/'+getUser()+'.json',
+              success:function(response){
+                $scope.UserSvc.settings(response).apply();
+              },
+              error:function(){
+                
+              }
+            });
+          },
+          error:function(){
+
+          }
+        });
+
+
+
+
+
+      });
+    </script>
+  </body>
+</html>

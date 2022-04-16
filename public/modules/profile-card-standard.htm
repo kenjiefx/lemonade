@@ -1,0 +1,7 @@
+<!-- Requires UserSvc -->
+<div xpatch="UserModelPatch" xrequire="UserSvc" class="profile-card-outer">
+  {{UserModel.firstName}}
+  <section xif="UserModel.Settings.allowTest is true">
+    Yes, allow test
+  </section>
+</div>
