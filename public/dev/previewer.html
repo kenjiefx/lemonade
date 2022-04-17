@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/app/global.css">
     <link rel="stylesheet" href="/venta/app.css">
     <link rel="stylesheet" href="/dev/style.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kenjiefx/strawberry-js/dist/strawberry.v1.0.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kenjiefx/strawberry-js/dist/strawberry.v1.0.9.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/app/main.js"></script>
     <!--Font Declarations-->
@@ -22,7 +22,7 @@
         </div>
       </section>
       <main id="main">
-        <div class="preview-wrapper">
+        <div class="preview-wrapper w-inherit">
           <section xcomponent="preview" class="preview-container"></section>
         </div>
       </main>
@@ -57,7 +57,7 @@
                 $scope.UserSvc.settings(response).apply();
               },
               error:function(){
-                
+
               }
             });
           },

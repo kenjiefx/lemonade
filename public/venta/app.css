@@ -10,6 +10,122 @@
   height: 35px;
 }
 
+.w-inherit {width: 100%;}
+.h-inherit {height: 100%;}
+
+.bg-photos {
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+.card-type-regular {
+  box-shadow: 0px 0px 1px 0 rgb(0 0 0 / 20%);
+}
+
+.profile-cover-photo {
+  background-position: center !important;
+  background-size: cover !important;
+  width: 100%;
+  height: 180px;
+}
+
+.profile-photo-user-initials {
+  background-color: #3f51b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rubik';
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.profile-photo-wrapper {
+  height: 100px;
+  width: 100px;
+  border-radius: 140px;
+  margin-top: -50px;
+  margin-left: 20px;
+  border-style: solid;
+  border-color: white;
+}
+
+.profile-card-username {
+    font-family: 'Rubik';
+    color: #5a5a5a;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: 0.4px;
+}
+
+.profile-card-spacer {
+  margin-top: 16px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ebebeb;
+  margin-bottom: 16px;
+}
+
+.profile-card-section-header {
+  font-family: 'Poppins';
+  font-size: 13.5px;
+  color: #3e3e3e;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.profile-card-work {
+  background-color: #3f51b5;
+  width: max-content;
+  padding: 5px 8px;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  font-size: 13.5px;
+  letter-spacing: 0.5px;
+}
+
+.profile-card-section-content {
+  font-size: 14px;
+  font-family: 'Rubik';
+  font-weight: 300;
+  line-height: 21px;
+}
+
+.profile-card-header {
+  padding: 5px 20px;
+}
+
+.profile-card-name-wrapper {
+    align-items: center;
+}
+
+.profile-card-location {
+  font-family: 'Rubik';
+  color: #979797;
+  font-size: 14.5px;
+  font-weight: 400;
+  display: flex;
+}
+
+.profile-card-location-text {
+  margin-top: 3px;
+}
+
+img.socials-icon {
+  height: 35px;
+}
+
+.profile-card-name {
+  font-size: 19.5px;
+  font-family: 'Poppins';
+  letter-spacing: 0.3px;
+  color: #2a2a2a;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
 .page-error-message {
   font-family: 'Poppins';
   font-size: 13.5px;
@@ -26,4 +142,30 @@
   font-weight: 100;
   font-size: 20px;
   color: #7e7e7e;
+}
+
+
+
+@media screen and (min-width: 1241px) {
+  .profile-card-name-wrapper {display:flex;}
+  .profile-card-location {margin-left:8px;margin-top: -1px;}
+}
+
+@media screen and (max-width: 1240px) and (min-width: 1201px) {
+  .profile-card-name-wrapper {display:flex;}
+  .profile-card-location {margin-left:8px;margin-top: -1px;}
+}
+
+@media screen and (max-width: 1200px) and (min-width: 993px) {
+  .profile-card-name-wrapper {display:flex;}
+  .profile-card-location {margin-left:8px;margin-top: -1px;}
+}
+
+@media screen and (max-width: 992px) and (min-width: 769px) {
+  .profile-card-name-wrapper {display:flex;}
+  .profile-card-location {margin-left:8px;margin-top: -1px;}
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+
 }

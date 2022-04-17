@@ -21,6 +21,14 @@ app.service('UserSvc',function($scope,$patch){
     constructor(user){
       this.id = user.id;
       this.firstName = user.firstName;
+      this.username = user.username;
+      this.lastName = user.lastName;
+      this.location = user.location;
+      this.about = user.about;
+      this.primaryPhotos = {
+        profile: user.primaryPhotos.profile,
+        cover: user.primaryPhotos.cover
+      }
       this.patch();
     }
     setSettings(settings){
@@ -51,6 +59,11 @@ app.service('UserSvc',function($scope,$patch){
     settings(settings){
       $scope.UserModel.setSettings(settings);
       return $scope.UserModel.getSettings();
+    }
+    createInitials(){
+      let fName = $scope.UserModel.firstName.charAt(0);
+      let lName = $scope.UserModel.lastName.charAt(0);
+      return fName+''+lName;
     }
   }
 

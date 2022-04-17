@@ -4,6 +4,7 @@
 	"firstName": "Kenjie",
 	"lastName": "Terrado",
 	"email": "terradokenjie@gmail.com",
+	"location":"Cagayan de Oro City",
 	"primaryPhotos":{
 		"profile":null,
 		"cover":null
@@ -11,7 +12,7 @@
 	"about": {
 		"me": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
 		"work": [
-			"Engineer"
+			"Civil Engineer"
 		]
 	}
 }
