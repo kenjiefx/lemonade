@@ -1,0 +1,50 @@
+{
+	"id": "512tGba8uandjPOls",
+	"handle": "bukidnon-airport-project",
+	"title": "Bukidnon Airport Project",
+  "photo":null,
+	"location": {
+		"street": null,
+		"barangay": "Brgy Maray2x",
+		"towncity": {
+			"id": "tyahPPolhy77ahsnd",
+			"name": "Don Carlos",
+			"type": "town",
+			"handle": "don-carlos-bukidnon"
+		},
+		"province": {
+			"id": "ikpaujjnmaksjudasd",
+			"name": "Bukidnon",
+			"handle": "bukidnon"
+		},
+		"region": {
+			"id": "558yahklajsndhasd",
+			"name": "Northern Mindanao",
+			"handle": "northern-mindanao"
+		},
+		"islandGroup": {
+			"id": "uYyhank7123123",
+			"name": "Mindanao",
+			"handle": "mindanao"
+		}
+	},
+  "metrics":{
+    "follows":1982,
+    "hearts":6514,
+    "posts":234
+  },
+	"about": "Second airport in Mindanao to serve places in Bukidnon and Cotabato province",
+	"type": "public",
+	"cost": null,
+	"status": "under-construction",
+  "requester":{
+    "metrics":{
+      "hasFollowed":false,
+      "hasLiked":true
+    },
+		"isAllowed":{
+			"toFollow":true,
+			"toLike":true
+		}
+  }
+}

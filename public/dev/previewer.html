@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Module Previewer</title>
     <link rel="stylesheet" href="/app/global.css">
     <link rel="stylesheet" href="/venta/app.css">
@@ -13,10 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;700;800&family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+    <!--Third Party Library-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
   </head>
   <body>
     <app xscope="previewer">
-      <section id="loader" class="loader-container">
+      <section id="loader" class="loading-container">
         <div class="loading-container-wrapper">
           <img class="loader-spinner-icon" src="https://cdn.shopify.com/s/files/1/0560/7466/6159/files/spinner.gif?v=1646281504">
         </div>
@@ -28,7 +31,7 @@
       </main>
     </app>
     <script type="text/javascript">
-      app.scope('previewer',['presets,modules'],function($scope,AjaxSvc,UserSvc){
+      app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc){
 
         let Params = new URLSearchParams(window.location.search);
 
@@ -42,6 +45,10 @@
           let module = Params.get('view');
           if (null===module) module = 'page-error';
           return '/modules/'+module;
+        }
+
+        let getProject = function(){
+          return Params.get('project');
         }
 
         $scope.preview = getView()+'.htm';
@@ -67,7 +74,18 @@
         });
 
 
+        // Loads in Project data
+        if (getProject()!==null) {
+            AjaxSvc.get({
+              url:'/dev/data/project/'+getProject()+'.json',
+              success:function(response){
+                $scope.ProjectSvc = new ProjectSvc(response);
+              },
+              error:function(){
 
+              }
+            });
+        }
 
 
       });

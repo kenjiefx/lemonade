@@ -1,0 +1,110 @@
+<!--
+Project Card - Standard Module
+Contains a summary of a development project
+Depending on the screen size, the amount of information
+being presented changes
+-->
+<div xpatch="@ProjectModelPatch" xrequire="['ProjectSvc']" class="card-type-regular project-card-outer">
+  <div class="project-card-inner">
+    <div class="project-card-header">
+      <div xif="ProjectModel.photo==null" class="">
+        <div class="bg-photos project-cover-photo" style="background:url(/assets/default-project-cover.webp)"></div>
+      </div>
+      <div class="project-card-header-about">
+        <div class="project-card-header-outer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f9f9f9" fill-opacity="1" d="M0,0L80,5.3C160,11,320,21,480,64C640,107,800,181,960,197.3C1120,213,1280,171,1360,149.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+          <div class="project-card-about-inner">
+            <div class="project-card-type">Project</div>
+            <div class="project-card-about-inner-inner">
+              <div class="project-card-title">{{ProjectModel.title}}</div>
+              <div class="project-card-about">
+                {{ProjectModel.about}}
+              </div>
+              <div class="project-card-spacer"></div>
+              <div class="project-card-location-wrapper">
+                <div class="flex a-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7; margin-right:5px;"><circle cx="12" cy="12" r="4"></circle><path d="M13 4.069V2h-2v2.069A8.01 8.01 0 0 0 4.069 11H2v2h2.069A8.008 8.008 0 0 0 11 19.931V22h2v-2.069A8.007 8.007 0 0 0 19.931 13H22v-2h-2.069A8.008 8.008 0 0 0 13 4.069zM12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"></path></svg>
+                  <div class="project-card-section-title">Location</div>
+                </div>
+                <div class="project-card-location-about">
+                  <span xif="ProjectModel.location.street!==null">{{ProjectModel.location.street}}</span>
+                  <span xif="ProjectModel.location.barangay!==null">{{ProjectModel.location.barangay}}</span>
+                  <span xif="ProjectModel.location.towncity.name!==null">{{ProjectModel.location.towncity.name}}</span>,
+                  <span xif="ProjectModel.location.province.name!==null">{{ProjectModel.location.province.name}}</span>,
+                  <span xif="ProjectModel.location.region.name!==null">{{ProjectModel.location.region.name}}</span>
+                </div>
+              </div>
+              <div class="project-card-spacer"></div>
+              <div xpatch="@ProjectMetricsUpdater" class="project-card-metrics-outer">
+                <div class="project-card-metrics-inner">
+                  <div xif="ProjectModel.requester.metrics.hasFollowed==true" class="project-card-metric-item">
+                    <div class="project-card-item-inner">
+                      <svg xclick="ProjectSvc.actions.follow()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7;"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path></svg>
+                      <div class="project-card-item-text">
+                        <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.follows)}}</div>
+                        <div class="project-card-item-subtext">Follow this project</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div xif="ProjectModel.requester.metrics.hasFollowed==false" class="project-card-metric-item">
+                    <div class="project-card-item-inner">
+                      <svg xclick="ProjectSvc.actions.follow()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path></svg>
+                      <div class="project-card-item-text">
+                        <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.follows)}}</div>
+                        <div class="project-card-item-subtext">Follow this project</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div xif="ProjectModel.requester.metrics.hasLiked==true" class="project-card-metric-item">
+                    <div class="project-card-item-inner">
+                      <svg xclick="ProjectSvc.actions.like()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                    </div>
+                    <div class="project-card-item-text">
+                      <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.hearts)}}</div>
+                      <div class="project-card-item-subtext">Like this project</div>
+                    </div>
+                  </div>
+                  <div xif="ProjectModel.requester.metrics.hasLiked==false" class="project-card-metric-item">
+                    <div class="project-card-item-inner">
+                      <svg xclick="ProjectSvc.actions.like()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                    </div>
+                    <div class="project-card-item-text">
+                      <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.hearts)}}</div>
+                      <div class="project-card-item-subtext">Like this project</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card-spacer"></div>
+              <div xpatch="@ProjectViewDetails">
+                <div xif="ProjectSvc.viewDetailsState==false">
+                  <div class="project-see-more-outer">
+                    <div xclick="ProjectSvc.viewDetails()" class="project-see-more-inner">
+                      <div class="project-see-more-text">View Project Details</div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#585858;transform: ;msFilter:;"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
+                    </div>
+                  </div>
+                </div>
+                <div xif="ProjectSvc.viewDetailsState==true">
+                  <div class="project-see-more-outer">
+                    <div xclick="ProjectSvc.hideDetails()" class="project-see-more-inner">
+                      <div class="project-see-more-text">Hide Project Details</div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#585858;transform: ;msFilter:;"><path d="m6.293 13.293 1.414 1.414L12 10.414l4.293 4.293 1.414-1.414L12 7.586z"></path></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div xhide="@ProjectDetailsList">
+                <div class="project-card-spacer"></div>
+                This contains all the project details
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card-about-padder">
+
+    </div>
+  </div>
+</div>
