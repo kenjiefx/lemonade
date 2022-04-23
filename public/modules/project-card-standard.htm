@@ -41,7 +41,7 @@ being presented changes
                     <div class="project-card-item-inner">
                       <svg xclick="ProjectSvc.actions.follow()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7;"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path></svg>
                       <div class="project-card-item-text">
-                        <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.follows)}}</div>
+                        <div class="project-card-item-metric-count">{{Utils.number.toCountable(ProjectModel.metrics.follows)}}</div>
                         <div class="project-card-item-subtext">Follow this project</div>
                       </div>
                     </div>
@@ -50,7 +50,7 @@ being presented changes
                     <div class="project-card-item-inner">
                       <svg xclick="ProjectSvc.actions.follow()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;"><path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path></svg>
                       <div class="project-card-item-text">
-                        <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.follows)}}</div>
+                        <div class="project-card-item-metric-count">{{Utils.number.toCountable(ProjectModel.metrics.follows)}}</div>
                         <div class="project-card-item-subtext">Follow this project</div>
                       </div>
                     </div>
@@ -60,7 +60,7 @@ being presented changes
                       <svg xclick="ProjectSvc.actions.like()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
                     </div>
                     <div class="project-card-item-text">
-                      <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.hearts)}}</div>
+                      <div class="project-card-item-metric-count">{{Utils.number.toCountable(ProjectModel.metrics.hearts)}}</div>
                       <div class="project-card-item-subtext">Like this project</div>
                     </div>
                   </div>
@@ -69,7 +69,7 @@ being presented changes
                       <svg xclick="ProjectSvc.actions.like()" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
                     </div>
                     <div class="project-card-item-text">
-                      <div class="project-card-item-metric-count">{{ProjectSvc.toCount(ProjectModel.metrics.hearts)}}</div>
+                      <div class="project-card-item-metric-count">{{Utils.number.toCountable(ProjectModel.metrics.hearts)}}</div>
                       <div class="project-card-item-subtext">Like this project</div>
                     </div>
                   </div>
@@ -96,7 +96,45 @@ being presented changes
               </div>
               <div xhide="@ProjectDetailsList">
                 <div class="project-card-spacer"></div>
-                This contains all the project details
+                <div class="project-card-details-item">
+                  <div class="project-card-details-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad"><path d="M2 8v4.001h1V18H2v3h16l3 .001V21h1v-3h-1v-5.999h1V8L12 2 2 8zm4 10v-5.999h2V18H6zm5 0v-5.999h2V18h-2zm7 0h-2v-5.999h2V18zM14 8a2 2 0 1 1-4.001-.001A2 2 0 0 1 14 8z"></path></svg>
+                  </div>
+                  <div class="project-card-details-info">
+                    <div class="project-card-details-title">Cost</div>
+                    <div xif="ProjectModel.cost!==null">
+                      <div class="project-card-details-description">₱1.2 Million</div>
+                    </div>
+                    <div xif="ProjectModel.cost==null">
+                      <div class="project-card-details-description-passive">(Unknown)</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-card-spacer"></div>
+                <div class="project-card-details-item">
+                  <div class="project-card-details-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad"><path d="M21 15a9.11 9.11 0 0 0-.18-1.81 8.53 8.53 0 0 0-.53-1.69 8.08 8.08 0 0 0-.83-1.5 8.73 8.73 0 0 0-1.1-1.33A8.27 8.27 0 0 0 17 7.54a8.08 8.08 0 0 0-1.53-.83L15 6.52V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.52l-.5.19a8.08 8.08 0 0 0-1.5.83 8.27 8.27 0 0 0-1.33 1.1A8.27 8.27 0 0 0 4.54 10a8.08 8.08 0 0 0-.83 1.53 9 9 0 0 0-.53 1.69A9.11 9.11 0 0 0 3 15v3H2v2h20v-2h-1zM5 15a7.33 7.33 0 0 1 .14-1.41 6.64 6.64 0 0 1 .41-1.31 7.15 7.15 0 0 1 .64-1.19 7.15 7.15 0 0 1 1.9-1.9A7.33 7.33 0 0 1 9 8.68V15h2V6h2v9h2V8.68a8.13 8.13 0 0 1 .91.51 7.09 7.09 0 0 1 1 .86 6.44 6.44 0 0 1 .85 1 6 6 0 0 1 .65 1.19 7.13 7.13 0 0 1 .41 1.31A7.33 7.33 0 0 1 19 15v3H5z"></path></svg>
+                  </div>
+                  <div class="project-card-details-info">
+                    <div class="project-card-details-title">Status</div>
+                    <div class="project-card-details-description">{{ProjectModel.status}}</div>
+                  </div>
+                </div>
+                <div class="project-card-spacer"></div>
+                <div class="project-card-details-item">
+                  <div class="project-card-details-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad"><path d="M11.707 2.293A.996.996 0 0 0 11 2H6a.996.996 0 0 0-.707.293l-3 3A.996.996 0 0 0 2 6v5c0 .266.105.52.293.707l10 10a.997.997 0 0 0 1.414 0l8-8a.999.999 0 0 0 0-1.414l-10-10zM8.353 10a1.647 1.647 0 1 1-.001-3.293A1.647 1.647 0 0 1 8.353 10z"></path></svg>
+                  </div>
+                  <div class="project-card-details-info">
+                    <div class="project-card-details-title">Project Tag</div>
+                    <div class="project-card-details-description">{{ProjectModel.type}}</div>
+                  </div>
+                </div>
+                <div class="project-card-spacer"></div>
+                <div class="project-card-about">
+                  Got an update? You can submit updated data about this Project here
+                </div>
+                <button class="project-card-edit-button" type="button" name="button">Edit</button>
               </div>
             </div>
           </div>

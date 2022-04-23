@@ -37,6 +37,50 @@
 	"type": "public",
 	"cost": null,
 	"status": "under-construction",
+	"posts":[
+		{
+			"id":"ayahsndjkasda",
+			"title":"asdasdasdasd",
+			"content":"Lorem ipsum market akdnam, asd!",
+			"author":{
+				"id":"uaHHnahsd",
+				"username":"rterrado",
+				"firstName":"Kenjie",
+				"location":"Cagayan de Oro City",
+				"lastName":"Terrado",
+				"profilePhoto":null
+			},
+			"metrics":{
+				"hearts":7162,
+				"comments":1233
+			},
+			"requester":{
+				"hasLiked":true,
+				"isAuthor":false
+			}
+		},
+		{
+			"id":"855256525",
+			"title":"asdasdasd",
+			"content":"She's changes cause one you wake up and your hears",
+			"author":{
+				"id":"uaHHnahsd",
+				"username":"ariane",
+				"firstName":"Ariana",
+				"location":"Davao City",
+				"lastName":"Grande",
+				"profilePhoto":null
+			},
+			"metrics":{
+				"hearts":85,
+				"comments":11
+			},
+			"requester":{
+				"hasLiked":false,
+				"isAuthor":true
+			}
+		}
+	],
   "requester":{
     "metrics":{
       "hasFollowed":false,

@@ -141,6 +141,7 @@ app.service('ProjectSvc',function($scope,$patch,$show,$hide){
       this.type = project.type;
       this.cost = project.cost;
       this.status = project.status;
+      this.posts = project.posts;
       this.requester = project.requester;
     }
   }
@@ -187,9 +188,7 @@ app.service('ProjectSvc',function($scope,$patch,$show,$hide){
     }
     patch(){
       $patch('ProjectModelPatch');
-    }
-    toCount(num){
-      return numeral(num).format('0,0');
+      $patch('PostListing');
     }
     viewDetails(){
       $show('ProjectDetailsList');
@@ -203,6 +202,22 @@ app.service('ProjectSvc',function($scope,$patch,$show,$hide){
     }
   }
   return ProjectSvc;
+});
+
+
+app.service('Utils',()=>{
+  return {
+    number:{
+      toCountable:(num)=>{
+        return numeral(num).format('0,0');
+      }
+    },
+    names:{
+      createInitials:(fName,lName)=>{
+        return fName.charAt(0)+''+lName.charAt(0);
+      }
+    }
+  }
 });
 
 app.service('AjaxSvc',function($scope){

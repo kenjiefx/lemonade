@@ -31,7 +31,15 @@
       </main>
     </app>
     <script type="text/javascript">
-      app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc){
+      app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc,Utils){
+
+
+        /** Official Here **/
+        $scope.Utils = Utils;
+        
+
+
+        /** End Official **/
 
         let Params = new URLSearchParams(window.location.search);
 

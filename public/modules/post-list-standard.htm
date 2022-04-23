@@ -1,0 +1,38 @@
+<!--
+Post List
+Enlists all posts depending on the query
+-->
+<div xpatch="@PostListing" xrequire="['ProjectSvc']">
+  <div class="post-listing-outer">
+    <div class="post-listing-inner">
+      <div xrepeat="ProjectModel.posts as post">
+        <div class="post-card-outer">
+          <div class="post-card-inner">
+            <div class="post-card-header-outer">
+              <div class="post-card-header-inner">
+                <div class="post-card-header-inner-left">
+                  <div xif="post.author.profilePhoto==null" class="post-card-author-photo">
+                    {{$parent.Utils.names.createInitials(post.author.firstName,post.author.lastName)}}
+                  </div>
+                </div>
+                <div class="post-card-header-inner-right">
+                  <div class="post-card-author-username">@{{post.author.username}}</div>
+                  <div class="post-card-author-details">
+                    <div class="post-card-author-name">{{post.author.firstName}} {{post.author.lastName}}</div>
+                    <div class="post-card-author-location">, {{post.author.location}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-body-text">
+                {{post.content}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
