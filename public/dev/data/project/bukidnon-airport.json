@@ -56,7 +56,11 @@
 			},
 			"requester":{
 				"hasLiked":true,
-				"isAuthor":false
+				"hasCommented":false,
+				"isAuthor":false,
+				"isAllowed":{
+					"toLike":true
+				}
 			}
 		},
 		{
@@ -77,7 +81,11 @@
 			},
 			"requester":{
 				"hasLiked":false,
-				"isAuthor":true
+				"isAuthor":true,
+				"hasCommented":true,
+				"isAllowed":{
+					"toLike":true
+				}
 			}
 		}
 	],

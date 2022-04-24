@@ -1,6 +1,13 @@
 <!--
 Post List
 Enlists all posts depending on the query
+
+@TODO
+- Add image display capability
+- Add date
+- Share button
+- Comment hover effect
+- Post link
 -->
 <div xpatch="@PostListing" xrequire="['ProjectSvc']">
   <div class="post-listing-outer">
@@ -8,6 +15,24 @@ Enlists all posts depending on the query
       <div xrepeat="ProjectModel.posts as post">
         <div class="post-card-outer">
           <div class="post-card-inner">
+            <div class="post-card-post-option">
+              <svg xclick="PostSvc.cardUX.showOptions({{$index}})" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+              <div class="post-card-options" xid="post-card-options-{{$index}}">
+                <div xif="post.requester.isAuthor==true">
+                  <div class="post-card-option-item">
+                    Edit
+                  </div>
+                  <div class="post-card-option-item">
+                    Delete
+                  </div>
+                </div>
+                <div xif="post.requester.isAuthor==false">
+                  <div class="post-card-option-item">
+                    Report
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="post-card-header-outer">
               <div class="post-card-header-inner">
                 <div class="post-card-header-inner-left">
@@ -27,6 +52,45 @@ Enlists all posts depending on the query
             <div class="post-card-body">
               <div class="post-card-body-text">
                 {{post.content}}
+              </div>
+            </div>
+            <div class="post-card-spacer"></div>
+            <div class="post-card-metrics-wrapper-outer">
+              <div class="post-card-metrics-wrapper-inner">
+                <div xif="post.requester.isAllowed.toLike==true" class="post-card-item">
+                  <div xif="post.requester.hasLiked==true" class="post-card-item-item">
+                    <svg xclick="PostSvc.metrics.unlike({{$index}})" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#673ab7;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                    <div class="post-metrics-count-text">
+                      {{$parent.Utils.number.toCountable(post.metrics.hearts)}}
+                    </div>
+                  </div>
+                  <div xif="post.requester.hasLiked==false" class="post-card-item-item">
+                    <svg xclick="PostSvc.metrics.like({{$index}})" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                    <div class="post-metrics-count-text">
+                      {{$parent.Utils.number.toCountable(post.metrics.hearts)}}
+                    </div>
+                  </div>
+                  <div class="post-card-item-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;"><path d="M20 2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h3v3.766L13.277 18H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14h-7.277L9 18.234V16H4V4h16v12z"></path><circle cx="15" cy="10" r="2"></circle><circle cx="9" cy="10" r="2"></circle></svg>
+                    <div class="post-metrics-count-text">
+                      {{$parent.Utils.number.toCountable(post.metrics.comments)}}
+                    </div>
+                  </div>
+                </div>
+                <div xif="post.requester.isAllowed.toLike==false" class="post-card-item">
+                  <div class="post-card-item-item">
+                    <svg class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;transform: ;msFilter:;"><path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path></svg>
+                    <div class="post-metrics-count-text">
+                      {{$parent.Utils.number.toCountable(post.metrics.hearts)}}
+                    </div>
+                  </div>
+                  <div class="post-card-item-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad;"><path d="M20 2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h3v3.766L13.277 18H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14h-7.277L9 18.234V16H4V4h16v12z"></path><circle cx="15" cy="10" r="2"></circle><circle cx="9" cy="10" r="2"></circle></svg>
+                    <div class="post-metrics-count-text">
+                      {{$parent.Utils.number.toCountable(post.metrics.comments)}}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

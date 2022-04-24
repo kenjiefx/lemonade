@@ -240,3 +240,26 @@ app.service('AjaxSvc',function($scope){
     }
   }
 });
+
+app.service('PostSvc',function($scope,$patch){
+  return {
+    metrics:{
+      like:function(listIndex){
+        $scope.ProjectModel.posts[listIndex].metrics.hearts++;
+        $scope.ProjectModel.posts[listIndex].requester.hasLiked = true;
+        $patch('PostListing');
+      },
+      unlike:function(listIndex){
+        $scope.ProjectModel.posts[listIndex].metrics.hearts--;
+        $scope.ProjectModel.posts[listIndex].requester.hasLiked = false;
+        $patch('PostListing');
+      }
+    },
+    cardUX:{
+      showOptions:function(listIndex){
+        let optionElement = document.querySelectorAll('[xid="post-card-options-'+listIndex+'"]')[0];
+        $('[xid="post-card-options-'+listIndex+'"]').slideToggle();
+      }
+    }
+  }
+});
