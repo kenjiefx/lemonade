@@ -128,28 +128,46 @@ app.service('UserSvc',function($scope,$patch){
 });
 
 
-app.service('ProjectSvc',function($scope,$patch,$show,$hide){
+app.factory('ProjectModel',function(){
   class ProjectModel {
-    constructor(project){
+    constructor(){
+    }
+    setProject(project){
       this.id = project.id;
       this.handle = project.handle;
       this.title = project.title;
       this.photo = project.photo;
       this.location = project.location;
-      this.metrics = project.metrics;
+      this.metrics = {};
       this.about = project.about;
       this.type = project.type;
       this.cost = project.cost;
       this.status = project.status;
-      this.posts = project.posts;
-      this.requester = project.requester;
+      this.posts = {};
+      this.requester = {};
+    }
+    setMetrics(metrics){
+      this.metrics = metrics;
+    }
+    setPostList(postList){
+      this.posts = postList;
+    }
+    setRequester(requester){
+      this.requester = requester;
+    }
+    hasPosts(){
+      if (undefined==this.posts) return false;
+      if (null===this.posts) return false;
+      return (Object.keys(this.posts).length === 0);
     }
   }
+  return ProjectModel;
+});
 
+
+app.service('ProjectSvc',function($scope,$patch,$show,$hide){
   class ProjectActions{
-    constructor(){
-
-    }
+    constructor(){}
     follow(){
       if ($scope.ProjectModel.requester.isAllowed.toFollow) {
         if (!$scope.ProjectModel.requester.metrics.hasFollowed) {
@@ -181,8 +199,6 @@ app.service('ProjectSvc',function($scope,$patch,$show,$hide){
 
   class ProjectSvc{
     constructor(project){
-      $scope.ProjectModel = new ProjectModel(project);
-      this.patch();
       this.actions = new ProjectActions;
       this.viewDetailsState = false;
     }

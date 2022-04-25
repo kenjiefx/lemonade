@@ -2,7 +2,7 @@
 	"id": "512tGba8uandjPOls",
 	"handle": "bukidnon-airport-project",
 	"title": "Bukidnon Airport Project",
-  "photo":null,
+	"photo": null,
 	"location": {
 		"street": null,
 		"barangay": "Brgy Maray2x",
@@ -28,75 +28,8 @@
 			"handle": "mindanao"
 		}
 	},
-  "metrics":{
-    "follows":1982,
-    "hearts":6514,
-    "posts":234
-  },
 	"about": "Second airport in Mindanao to serve places in Bukidnon and Cotabato province",
 	"type": "public",
 	"cost": null,
-	"status": "under-construction",
-	"posts":[
-		{
-			"id":"ayahsndjkasda",
-			"title":"asdasdasdasd",
-			"content":"Lorem ipsum market akdnam, asd!",
-			"author":{
-				"id":"uaHHnahsd",
-				"username":"rterrado",
-				"firstName":"Kenjie",
-				"location":"Cagayan de Oro City",
-				"lastName":"Terrado",
-				"profilePhoto":null
-			},
-			"metrics":{
-				"hearts":7162,
-				"comments":1233
-			},
-			"requester":{
-				"hasLiked":true,
-				"hasCommented":false,
-				"isAuthor":false,
-				"isAllowed":{
-					"toLike":true
-				}
-			}
-		},
-		{
-			"id":"855256525",
-			"title":"asdasdasd",
-			"content":"She's changes cause one you wake up and your hears",
-			"author":{
-				"id":"uaHHnahsd",
-				"username":"ariane",
-				"firstName":"Ariana",
-				"location":"Davao City",
-				"lastName":"Grande",
-				"profilePhoto":null
-			},
-			"metrics":{
-				"hearts":85,
-				"comments":11
-			},
-			"requester":{
-				"hasLiked":false,
-				"isAuthor":true,
-				"hasCommented":true,
-				"isAllowed":{
-					"toLike":true
-				}
-			}
-		}
-	],
-  "requester":{
-    "metrics":{
-      "hasFollowed":false,
-      "hasLiked":true
-    },
-		"isAllowed":{
-			"toFollow":true,
-			"toLike":true
-		}
-  }
+	"status": "under-construction"
 }

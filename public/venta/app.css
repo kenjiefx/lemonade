@@ -483,6 +483,83 @@ img.socials-icon {
   color: #673ab7;
 }
 
+.site-header-outer {
+    height: 60px;
+    box-shadow: 1.5px 0.5px 1.8px 1px rgb(0 0 0 / 20%);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background: rgb(42,52,62);
+    background: radial-gradient(circle, rgba(42,52,62,1) 0%, rgba(45,52,68,1) 44%, rgba(65,50,84,1) 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.site-header-inner {
+    width: 100%;
+    max-width: 1080px;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+  font-size: 34px;
+  font-family: 'Poppins';
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #9c27b0, 0 0 80px #9c27b0, 0 0 90px #9c27b0, 0 0 100px #9c27b0, 0 0 150px #9c27b0;
+  margin-right: 30px;
+}
+
+.site-logo-text {
+    font-family: 'Poppins';
+    font-size: 15.5px;
+    color: white;
+    font-weight: 400;
+}
+
+.header-right-section-outer {
+  flex-grow: 1;
+}
+
+.header-right-section-inner {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.header-offline-options {
+    display: flex;
+}
+
+.header-register-button {
+  font-family: 'Poppins';
+    font-size: 16px;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header-register-button:hover {
+  background-color: white;
+  color: #282828;
+}
+
+.header-login-button {
+  font-family: 'Poppins';
+  font-size: 16px;
+  color: white;
+  padding: 8px 18px;
+  cursor: pointer;
+}
+
+.header-login-button:hover {
+  color: #f9f9f9;
+}
+
 @media screen and (min-width: 1241px) {
   .profile-card-name-wrapper {display:flex;}
   .profile-card-location {margin-left:8px;margin-top: -1px;}

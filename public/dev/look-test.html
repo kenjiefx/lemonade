@@ -26,6 +26,7 @@
         </div>
       </section>
       <main id="main">
+        <header xcomponent="'/modules/site-header.htm'"></header>
         <div class="look-test-wrapper-outer w-inherit">
           <div class="look-test-wrapper-inner">
             <section xcomponent="projectCard" class="look-test-outer look-test-outer-left"></section>
@@ -35,12 +36,17 @@
       </main>
     </app>
     <script type="text/javascript">
-      app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc,Utils,PostSvc){
+      app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc,Utils,PostSvc,ProjectModel){
+
+        /** For Testing Only **/
+        
+        /** End: For Testing Only **/
 
         /** Official Here **/
         $scope.Utils = Utils;
         $scope.PostSvc = PostSvc;
-
+        $scope.ProjectSvc = new ProjectSvc();
+        $scope.ProjectModel = new ProjectModel();
         /** End Official **/
 
         let Params = new URLSearchParams(window.location.search);
@@ -92,7 +98,21 @@
               url:'/dev/data/project/'+getProject()+'.json',
               success:function(response){
                 console.log('getting project');
-                $scope.ProjectSvc = new ProjectSvc(response);
+                $scope.ProjectModel.setProject(response);
+                $scope.ProjectSvc.patch();
+              },
+              error:function(){
+
+              }
+            });
+            AjaxSvc.get({
+              url:'/dev/data/dynamic/'+getProject()+'.json',
+              success:function(response){
+                console.log('getting dynamic data about project');
+                $scope.ProjectModel.setMetrics(response.metrics);
+                $scope.ProjectModel.setPostList(response.posts);
+                $scope.ProjectModel.setRequester(response.requester);
+                $scope.ProjectSvc.patch();
               },
               error:function(){
 

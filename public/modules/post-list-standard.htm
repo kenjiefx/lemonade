@@ -12,6 +12,11 @@ Enlists all posts depending on the query
 <div xpatch="@PostListing" xrequire="['ProjectSvc']">
   <div class="post-listing-outer">
     <div class="post-listing-inner">
+      <div xif="ProjectModel.hasPosts()==false">
+        <div class="post-card-body post-card-no-posts-message">
+          There no updates posted in this project yet.
+        </div>
+      </div>
       <div xrepeat="ProjectModel.posts as post">
         <div class="post-card-outer">
           <div class="post-card-inner">
