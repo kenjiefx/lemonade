@@ -144,6 +144,7 @@ app.factory('ProjectModel',function(){
       this.cost = project.cost;
       this.status = project.status;
       this.posts = {};
+      this.hasPostlist = false;
       this.requester = {};
     }
     setMetrics(metrics){
@@ -151,14 +152,13 @@ app.factory('ProjectModel',function(){
     }
     setPostList(postList){
       this.posts = postList;
+      this.hasPostlist = true;
     }
     setRequester(requester){
       this.requester = requester;
     }
     hasPosts(){
-      if (undefined==this.posts) return false;
-      if (null===this.posts) return false;
-      return (Object.keys(this.posts).length === 0);
+      return this.hasPostlist;
     }
   }
   return ProjectModel;
@@ -205,6 +205,7 @@ app.service('ProjectSvc',function($scope,$patch,$show,$hide){
     patch(){
       $patch('ProjectModelPatch');
       $patch('PostListing');
+      $patch('CreatePostForProject');
     }
     viewDetails(){
       $show('ProjectDetailsList');

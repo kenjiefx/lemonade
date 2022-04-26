@@ -1,0 +1,54 @@
+<!--
+Create Post Preview
+-->
+<div xpatch="@CreatePostForProject">
+  <div xif="Requester.status=='online'">
+    <div class="create-post-preview-outer">
+      <div class="create-post-preview-inner">
+        <div class="create-post-preview-header">
+          <div class="create-post-preview-header-left">
+            <div xif="Requester.profilePhoto==null">
+              <div class="create-post-card-author-photo-empty">
+                <svg class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#2196f3;transform: ;msFilter:;"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div class="create-post-preview-header-right">
+            <div class="post-card-author-name">{{Requester.name}}</div>
+            <div class="post-card-author-username">@{{Requester.username}}</div>
+          </div>
+          <div class="create-post-preview-header-far">
+            <div class="create-post-thread-info-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#2196f3;"><path d="M19 2H5c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h3.5l3.5 4 3.5-4H19c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM9 12a2 2 0 1 1 .001-4.001A2 2 0 0 1 9 12zm6 0a2 2 0 1 1 .001-4.001A2 2 0 0 1 15 12z"></path></svg>
+              <div class="post-card-project-thread-name">{{ProjectModel.handle}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="create-post-textbox-wrapper">
+          <textarea class="create-post-textarea-input" name="name" rows="8" cols="80" placeholder="What's New About {{ProjectModel.title}}?"></textarea>
+        </div>
+        <div class="create-post-middle-options">
+          <div class="create-post-visibility-options">
+            <div class="create-post-visibility-icon-wrapper">
+              <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm7.931 9h-2.764a14.67 14.67 0 0 0-1.792-6.243A8.013 8.013 0 0 1 19.931 11zM12.53 4.027c1.035 1.364 2.427 3.78 2.627 6.973H9.03c.139-2.596.994-5.028 2.451-6.974.172-.01.344-.026.519-.026.179 0 .354.016.53.027zm-3.842.7C7.704 6.618 7.136 8.762 7.03 11H4.069a8.013 8.013 0 0 1 4.619-6.273zM4.069 13h2.974c.136 2.379.665 4.478 1.556 6.23A8.01 8.01 0 0 1 4.069 13zm7.381 6.973C10.049 18.275 9.222 15.896 9.041 13h6.113c-.208 2.773-1.117 5.196-2.603 6.972-.182.012-.364.028-.551.028-.186 0-.367-.016-.55-.027zm4.011-.772c.955-1.794 1.538-3.901 1.691-6.201h2.778a8.005 8.005 0 0 1-4.469 6.201z"></path></svg>
+              </div>
+            </div>
+            <select class="create-post-visibility-option-select" name="">
+              <option value="">Public</option>
+              <option value="">Limited</option>
+            </select>
+          </div>
+          <div class="create-post-cta-wrapper">
+            <button class="create-post-submit-button" type="button" name="button">
+              Post
+              <svg xmlns="http://www.w3.org/2000/svg" class="submit-post-icon" width="24" height="24" style=""><path d="M14 13H8V5H6v9a1 1 0 0 0 1 1h7v3l5-4-5-4v3z"></path></svg>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="create-post-additional-ctas" width="24" height="24" style="fill:#767676;"><path d="M4 5h13v7h2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h8v-2H4V5z"></path><path d="m8 11-3 4h11l-4-6-3 4z"></path><path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z"></path></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

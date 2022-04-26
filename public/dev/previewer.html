@@ -34,6 +34,13 @@
     <script type="text/javascript">
       app.scope('previewer',['presets,modules','Requester'],function($scope,AjaxSvc,UserSvc,ProjectSvc,Utils,PostSvc,ProjectModel){
 
+        /** For Testing Only **/
+        $scope.Requester.status = 'online';
+        $scope.Requester.profilePhoto = null;
+        $scope.Requester.name = 'Kenjie Terrado';
+        $scope.Requester.username = 'rterrado';
+        /** End: For Testing Only **/
+
         /** Official Here **/
         $scope.Utils = Utils;
         $scope.PostSvc = PostSvc;
@@ -105,7 +112,7 @@
                 $scope.ProjectSvc.patch();
               },
               error:function(){
-                
+
               }
             });
         }

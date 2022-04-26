@@ -30,7 +30,10 @@
         <div class="look-test-wrapper-outer w-inherit">
           <div class="look-test-wrapper-inner">
             <section xcomponent="projectCard" class="look-test-outer look-test-outer-left"></section>
-            <section xcomponent="postListing" class="look-test-outer look-test-outer-right"></section>
+            <div class="look-test-outer look-test-outer-right">
+              <section xcomponent="createPostPreview"></section>
+              <section xcomponent="postListing"></section>
+            </div>
           </div>
         </div>
       </main>
@@ -40,8 +43,9 @@
 
         /** For Testing Only **/
         $scope.Requester.status = 'online';
-        $scope.Requester.profilePhoto = 'https://www.biography.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU0ODUwMjQ0NjIwNzI0MDAx/chris-hemsworth-poses-during-a-photo-call-for-thor-ragnarok-on-october-15-2017-in-sydney-australia-photo-by-mark-metcalfe_getty-images-for-disney-square.jpg';
+        $scope.Requester.profilePhoto = null;
         $scope.Requester.name = 'Kenjie Terrado';
+        $scope.Requester.username = 'rterrado';
         /** End: For Testing Only **/
 
         /** Official Here **/
@@ -72,6 +76,7 @@
         $scope.preview = getView()+'.htm';
         $scope.projectCard = '/modules/project-card-standard.htm';
         $scope.postListing = '/modules/post-list-standard.htm';
+        $scope.createPostPreview = '/modules/create-post-preview.htm';
 
         // Loads in user data
         AjaxSvc.get({
