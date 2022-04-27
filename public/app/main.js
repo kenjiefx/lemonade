@@ -6,6 +6,8 @@ strawberry.create('app',function(){
   },2000);
 });
 
+app.version('1.0.0');
+
 app.factory('presets',function(){
   return {
     icons: {
@@ -47,7 +49,6 @@ app.factory('Requester',function(presets){
       if (localStorage.getItem('rphoto')!=='null') {
           this.profilePhoto = localStorage.getItem('rphoto');
       }
-
     }
     signOut(){
       this.set({
@@ -272,10 +273,96 @@ app.service('PostSvc',function($scope,$patch){
         $patch('PostListing');
       }
     },
+    dateFn:{
+      convert:function(dateString){
+        return moment(dateString).startOf('day').fromNow();
+      },
+      toReadable:function(dateString){
+        return moment(dateString).format('LLLL');
+      }
+    },
     cardUX:{
       showOptions:function(listIndex){
         let optionElement = document.querySelectorAll('[xid="post-card-options-'+listIndex+'"]')[0];
         $('[xid="post-card-options-'+listIndex+'"]').slideToggle();
+      },
+      clipContent:function(content){
+        if (content.length<150) {
+          return content;
+        }
+        return content.substring(0,150)+'...';
+      }
+    },
+    ctrl:{
+      visibility:{
+        is:'public',
+        update:function(){
+          $patch('postVisibilitySelection');
+        }
+      }
+    },
+    shares:{
+      facebookShareId:'null',
+      sdks:{
+        facebook:function(d,s,id){
+          // Facebook SDK
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+          js.setAttribute("sdkfor","facebook");
+          fjs.parentNode.insertBefore(js, fjs);
+        },
+        twitter:function(d,s,id){
+
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+          return t;
+        },
+        linkedIn:function(){
+          if (typeof (IN) !== 'undefined') {
+            IN.init();  // reinitiating linkedin button
+          } else {
+            $.getScript("http://platform.linkedin.com/in.js");
+          }
+        }
+      },
+      list:{
+        open:function(facebookShareId){
+          $scope.PostSvc.shares.facebookShareId = facebookShareId;
+          $patch('PostCardShareOptions');
+          $scope.PostSvc.shares.sdks.facebook(document,'script','facebook-jssdk');
+          window.twttr = $scope.PostSvc.shares.sdks.twitter(document,'script','twitter-wjs');
+          $('#linkedInButton').html('<script type="IN/Share" data-url="https://www.linkedin.com"></script>');
+          $scope.PostSvc.shares.sdks.linkedIn();
+          $('#post-card-modal').fadeIn();
+        },
+        close:function(){
+          $('script').each(function() {
+            // Removing of facebook SDK
+            if (this.src === 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0') {
+              this.parentNode.removeChild(this);
+              delete window.FB;
+            }
+            if (this.src === 'https://platform.twitter.com/widgets.js') {
+              this.parentNode.removeChild(this);
+              delete window.twttr;
+              delete window.__twttr;
+            }
+          });
+          delete window.IN;
+          $('#post-card-modal').fadeOut();
+        }
       }
     }
   }

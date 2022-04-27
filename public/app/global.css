@@ -9,3 +9,10 @@
 .white {color: white;}
 
 #main {display: none;}
+
+#post-card-modal {display:none;}
+#post-card-modal-loader {display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }

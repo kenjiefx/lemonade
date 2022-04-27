@@ -403,9 +403,8 @@ img.socials-icon {
 
 .post-card-author-username {
   font-size: 15px;
-    font-family: 'Rubik';
-    font-weight: 200;
-    margin-bottom: 2px;
+  font-family: 'Rubik';
+  font-weight: 200;
 }
 
 .post-card-header-inner-right {
@@ -640,14 +639,14 @@ img.socials-icon {
 }
 
 .post-card-project-thread-name{
-    margin-left: 10px;
-    padding:8px 12px;
-    border-radius:4px;
-    color:white;
-    font-family:'Rubik';
-    font-size:12px;
-    background: rgb(33,150,243);
-    background: linear-gradient(332deg, rgba(33,150,243,1) 0%, rgba(6,6,6,1) 100%);
+  margin-left: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #1e1d1d;
+  font-family: 'Rubik';
+  font-size: 12px;
+  background: rgb(33,150,243);
+  background: linear-gradient(332deg, rgb(202 243 245) 0%, rgb(166 247 228) 100%);
 }
 
 .create-post-preview-header-far {
@@ -684,7 +683,7 @@ img.socials-icon {
 }
 
 .create-post-textbox-wrapper:focus-within {
-  border-color: #282828;
+  border-color: #98ede5;
 }
 
 .create-post-submit-button{
@@ -721,6 +720,14 @@ img.socials-icon {
 
 .create-post-visibility-options {
   width: 50%;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.visibility-icon-type {
+  fill: #505050;
+  margin-right: 12px;
 }
 
 select.create-post-visibility-option-select {
@@ -728,7 +735,9 @@ select.create-post-visibility-option-select {
      font-size: 12.5px;
      padding: 5px 8px ;
      border-radius: 10px ;
-     border-color: #b3b3b3;
+     border-color: transparent;
+     height: max-content;
+     background-color: #efefef;
 }
 
 
@@ -737,6 +746,160 @@ select.create-post-visibility-option-select {
     display: flex;
 }
 
+.create-post-advisory-wrapper {
+  background-color: #dcf5ff;
+  padding: 30px;
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: #606060;
+}
+
+.create-post-login-button {
+  font-family: 'Poppins';
+  font-size: 16px;
+  width: max-content;
+  margin-top: 15px;
+  color: #2196f3;
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.post-card-single-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover!important;
+    background-position: center !important;
+}
+
+.post-card-single-image-wrapper {
+    margin-top: 14px;
+}
+
+.post-card-upper-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.post-card-post-date {
+  margin-left: 8px;
+  font-family: 'Rubik';
+  font-size: 12.4px;
+  color: #686868;
+}
+
+.post-card-metadata-wrapper-outer {
+  margin-top: -12px;
+  margin-bottom: -12px;
+}
+
+.post-card-metadata-wrapper-inner {
+  padding: 0px 30px;
+  display: flex;
+  font-family: 'Rubik';
+  font-size: 12.7px;
+  align-items: center;
+  color: #878787;
+  font-weight: 200;
+}
+
+.post-card-modal-outer {
+  position: fixed;
+  background-color: #0000001f;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.post-card-modal-close-wrapper {
+  width: 100%;
+  padding: 15px;
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.post-card-modal-content {
+    padding: 25px 0px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0.3px 0.3px 1.8px 0 rgb(0 0 0 / 20%);
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+}
+
+.post-card-modal-content-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -200px;
+}
+
+.post-card-modal-title {
+    padding: 0px 20px;
+    display: flex;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.post-card-modal-share-item {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.post-card-modal-share-title {
+    width: 50%;
+    font-size: 15px;
+    font-family: 'Rubik';
+}
+
+.post-card-modal-share-button {
+    width: 50%;
+    display: flex;
+    flex-direction: row-reverse;
+    color: white;
+}
+
+.post-modal-close-button {
+  border-style: none;
+  background-color: #2196f3;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-family: 'Poppins';
+  font-size: 13.5px;
+  cursor: pointer;
+  box-shadow: 0.5px 0.8px 3px 0.5px #c7c7c7;
+}
+
+.post-modal-close-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-card-visibility-text {
+    padding: 4px 8px;
+    background-color: #f3f3f3;
+    width: max-content;
+    font-family: 'Rubik';
+    font-size: 12px;
+    color: #2196f3;
+    font-weight: 200;
+    border-radius: 10px;
+    margin-left: 8px;
+}
 
 
 @media screen and (min-width: 1241px) {
@@ -746,6 +909,8 @@ select.create-post-visibility-option-select {
   .project-card-item-subtext {margin-left: 6px;}
   .create-post-preview-header{flex-wrap:nowrap;}
   .create-post-preview-header-far{padding:0px;flex-direction:row-reverse;}
+  .post-card-single-image {height:300px}
+  .post-card-single-image-wrapper {padding: 0px 20px;}
 }
 
 @media screen and (max-width: 1240px) and (min-width: 1201px) {
@@ -755,6 +920,8 @@ select.create-post-visibility-option-select {
   .project-card-item-subtext {margin-left: 6px;}
   .create-post-preview-header{flex-wrap:nowrap;}
   .create-post-preview-header-far{padding:0px;flex-direction:row-reverse;}
+  .post-card-single-image {height:300px}
+  .post-card-single-image-wrapper {padding: 0px 20px;}
 }
 
 @media screen and (max-width: 1200px) and (min-width: 993px) {
@@ -764,6 +931,8 @@ select.create-post-visibility-option-select {
   .project-card-item-subtext {margin-left: 6px;}
   .create-post-preview-header{flex-wrap:nowrap;}
   .create-post-preview-header-far{padding:0px;flex-direction:row-reverse;}
+  .post-card-single-image {height:300px}
+  .post-card-single-image-wrapper {padding: 0px 20px;}
 }
 
 @media screen and (max-width: 992px) and (min-width: 769px) {
@@ -773,6 +942,8 @@ select.create-post-visibility-option-select {
   .project-card-item-subtext {margin-left: 6px;}
   .create-post-preview-header{flex-wrap:nowrap;}
   .create-post-preview-header-far{padding:0px;flex-direction:row-reverse;}
+  .post-card-single-image {height:300px}
+  .post-card-single-image-wrapper {padding: 0px 20px;}
 }
 
 @media screen and (max-width: 768px) and (min-width: 601px) {
@@ -780,4 +951,6 @@ select.create-post-visibility-option-select {
   .project-card-item-subtext {margin-left: 6px;}
   .create-post-preview-header{flex-wrap:nowrap;}
   .create-post-preview-header-far{padding:0px;flex-direction:row-reverse;}
+  .post-card-single-image {height:300px}
+  .post-card-single-image-wrapper {padding: 0px 20px;}
 }

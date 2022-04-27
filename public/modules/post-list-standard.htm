@@ -3,11 +3,13 @@ Post List
 Enlists all posts depending on the query
 
 @TODO
-- Add image display capability
-- Add date
-- Share button
+[/] Add image display capability
+[/] Add date
+[/] Share button
 - Comment hover effect
 - Post link
+[/] visibility
+[/] Post caption clipper
 -->
 <div xpatch="@PostListing" xrequire="['ProjectSvc']">
   <div class="post-listing-outer">
@@ -47,7 +49,10 @@ Enlists all posts depending on the query
                   </div>
                 </div>
                 <div class="post-card-header-inner-right">
-                  <div class="post-card-author-username">@{{post.author.username}}</div>
+                  <div class="post-card-upper-header">
+                    <div class="post-card-author-username">@{{post.author.username}}</div>
+                    <div class="post-card-post-date">{{$parent.PostSvc.dateFn.convert(post.createdAt)}}</div>
+                  </div>
                   <div class="post-card-author-details">
                     <div class="post-card-author-name">{{post.author.firstName}} {{post.author.lastName}}</div>
                     <div class="post-card-author-location">, {{post.author.location}}</div>
@@ -57,7 +62,25 @@ Enlists all posts depending on the query
             </div>
             <div class="post-card-body">
               <div class="post-card-body-text">
-                {{post.content}}
+                {{$parent.PostSvc.cardUX.clipContent(post.content)}}
+              </div>
+            </div>
+            <div xif="post.images.count==0">
+              <div class="post-card-spacer"></div>
+            </div>
+            <div xif="post.images.count!==0">
+              <div class="post.images.count==1">
+                <div class="post-card-single-image-wrapper">
+                  <div class="post-card-single-image" style="background:url({{post.images.list.img1}})"></div>
+                </div>
+              </div>
+              <div class="post-card-spacer"></div>
+            </div>
+            <div class="post-card-metadata-wrapper-outer">
+              <div class="post-card-metadata-wrapper-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#adadad; margin-right:5px;"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg>
+                {{$parent.PostSvc.dateFn.toReadable(post.createdAt)}}
+                <div class="post-card-visibility-text">{{post.visibility}}</div>
               </div>
             </div>
             <div class="post-card-spacer"></div>
@@ -83,7 +106,7 @@ Enlists all posts depending on the query
                     </div>
                   </div>
                   <div class="post-card-item-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:red;"><path d="M3 12c0 1.654 1.346 3 3 3 .794 0 1.512-.315 2.049-.82l5.991 3.424c-.018.13-.04.26-.04.396 0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3c-.794 0-1.512.315-2.049.82L8.96 12.397c.018-.131.04-.261.04-.397s-.022-.266-.04-.397l5.991-3.423c.537.505 1.255.82 2.049.82 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .136.022.266.04.397L8.049 9.82A2.982 2.982 0 0 0 6 9c-1.654 0-3 1.346-3 3z"></path></svg>
+                    <svg xclick="PostSvc.shares.list.open('{{post.id}}')" class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:red;"><path d="M3 12c0 1.654 1.346 3 3 3 .794 0 1.512-.315 2.049-.82l5.991 3.424c-.018.13-.04.26-.04.396 0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3c-.794 0-1.512.315-2.049.82L8.96 12.397c.018-.131.04-.261.04-.397s-.022-.266-.04-.397l5.991-3.423c.537.505 1.255.82 2.049.82 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .136.022.266.04.397L8.049 9.82A2.982 2.982 0 0 0 6 9c-1.654 0-3 1.346-3 3z"></path></svg>
                   </div>
                 </div>
                 <div xif="post.requester.isAllowed.toLike==false" class="post-card-item">
@@ -100,6 +123,57 @@ Enlists all posts depending on the query
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-card-share-modal">
+      <div id="post-card-modal" class="post-card-modal-outer">
+        <div class="post-card-modal-close-wrapper">
+          <svg class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#000000"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+        </div>
+        <div class="post-card-modal-content-wrapper">
+          <div class="post-card-modal-content">
+            <div class="post-card-modal-title">
+                <svg class="clickable-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:red;margin-right:10px;"><path d="M3 12c0 1.654 1.346 3 3 3 .794 0 1.512-.315 2.049-.82l5.991 3.424c-.018.13-.04.26-.04.396 0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3c-.794 0-1.512.315-2.049.82L8.96 12.397c.018-.131.04-.261.04-.397s-.022-.266-.04-.397l5.991-3.423c.537.505 1.255.82 2.049.82 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .136.022.266.04.397L8.049 9.82A2.982 2.982 0 0 0 6 9c-1.654 0-3 1.346-3 3z"></path></svg>
+                Share This Post
+            </div>
+            <div xpatch="@PostCardShareOptions" class="post-card-modal-body">
+              <div class="post-card-spacer"></div>
+              <div id="fb-root"></div>
+              <div class="post-card-modal-share-item">
+                <div class="post-card-modal-share-title">
+                  Facebook
+                </div>
+                <div class="post-card-modal-share-button">
+                  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/{{PostSvc.shares.facebookShareId}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                </div>
+              </div>
+              <div class="post-card-spacer"></div>
+              <div class="post-card-modal-share-item">
+                <div class="post-card-modal-share-title">
+                  Twitter
+                </div>
+                <div class="post-card-modal-share-button">
+                  <a class="twitter-share-button"ref="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large">Tweet</a>
+                </div>
+              </div>
+              <div class="post-card-spacer"></div>
+              <div class="post-card-modal-share-item">
+                <div class="post-card-modal-share-title">
+                  LinkedIn
+                </div>
+                <div class="post-card-modal-share-button">
+                  <div id="linkedInButton">
+
+                  </div>
+                </div>
+              </div>
+              <div class="post-card-spacer"></div>
+              <div class="post-modal-close-button-wrapper">
+                <button xclick="PostSvc.shares.list.close()" class="post-modal-close-button" type="button" name="button">Close</button>
               </div>
             </div>
           </div>

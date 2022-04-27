@@ -1,4 +1,7 @@
 (() => {
+
+    console.log("Initializing Strawberry JS: Atlas Build V1.0.0\nDeveloped by Ken Terrado, 2022\nFor more details, visit github.com/kenjiefx/strawberry-js");
+
     var DomReady = window.DomReady = {};
 
     // Everything that has to do with properly supporting our document ready event. Brought over from the most awesome jQuery.
@@ -263,6 +266,8 @@
                         console.warn('strawberry.js: Unable to resolve component path: $scope.' + componentReference + ', typeof string required');
                     }
                 }
+
+                let appVersion = window[scopeObj.$app].$version;
 
                 this.$public().$http().init(scopeObj).get(path, (response) => {
 
@@ -943,8 +948,6 @@
 
                         // Finds all component element
                         let allComponentElements = strawberry.$$core.$getElementsFromScope(this.$scope.$name, 'xcomponent="' + componentName + '"');
-
-                        console.log(allComponentElements);
 
                         for (var i = 0; i < allComponentElements.length; i++) {
 
@@ -1690,6 +1693,9 @@
                 strawberry.$service[serviceName] = func;
                 return strawberry;
             },
+            version: (version)=>{
+                window[e].$version = version;
+            },
             scope: (scopeName, arg1, arg2) => {
                 try {
 
@@ -1739,6 +1745,8 @@
     // Boot Strawberry.js
     DomReady.ready(() => {
 
+        var startTime = performance.now();
+
         let app = window[strawberry.$app];
 
         // Looping through all scope elements in the document object
@@ -1757,9 +1765,13 @@
             let scopeObj = app.$scopes[scopeName];
 
             // Calls the render method of the scope services
+
             app.$scopes[scopeName].$services.$render(scopeObj, scopeElement);
 
         }
+
+        var endTime = performance.now();
+        console.log(`Performance: Initial rendering took ${endTime - startTime} milliseconds`)
 
     });
 })();
