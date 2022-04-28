@@ -1,0 +1,13 @@
+* Post List
+[] Delete Post Confirmation Modal
+[] Edit Post Modal
+[] Comment hover effect
+[] Post link
+
+
+* Profile Card
+* Post List on Profile page
+
+
+* Report Post Page
+* Edit Project Details Page
