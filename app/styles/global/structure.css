@@ -1,0 +1,20 @@
+.flex {
+    display: flex;
+}
+
+.flex.ac {
+    align-items: center;
+}
+
+.flex.jc {
+    justify-content: center;
+}
+
+/** Page Sizes **/
+.h-dev100 {
+    height: 100vh;
+}
+
+.h100 {
+    height: 100%;
+}

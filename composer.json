@@ -1,0 +1,21 @@
+{
+    "name": "kenjiefx/lemonade",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kenjiefx\\Lemonade\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kenji",
+            "email": "terradoflex@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "7.4.x-dev",
+        "slim/slim": "4.*"
+    }
+}

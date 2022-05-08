@@ -1,0 +1,113 @@
+{
+	"metrics": {
+		"follows": 1982,
+		"hearts": 6514,
+		"posts": 234
+	},
+	"posts": [{
+			"id": "ayahsndjkasda",
+			"title": "asdasdasdasd",
+			"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			"author": {
+				"id": "uaHHnahsd",
+				"username": "rterrado",
+				"firstName": "Kenjie",
+				"location": "Cagayan de Oro City",
+				"lastName": "Terrado",
+				"profilePhoto": null
+			},
+			"visibility":"limited",
+			"createdAt":"2022-02-20 10:01:06",
+			"images": {
+				"count": 1,
+				"list": {
+					"img1":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
+				}
+			},
+			"metrics": {
+				"hearts": 7162,
+				"comments": 1233
+			},
+			"requester": {
+				"hasLiked": true,
+				"hasCommented": false,
+				"isAuthor": false,
+				"isAllowed": {
+					"toLike": true
+				}
+			}
+		},
+		{
+			"id": "855256525",
+			"title": "asdasdasd",
+			"content": "She's changes cause one you wake up and your hears",
+			"author": {
+				"id": "uaHHnahsd",
+				"username": "ariane",
+				"firstName": "Ariana",
+				"location": "Davao City",
+				"lastName": "Grande",
+				"profilePhoto": null
+			},
+			"visibility":"public",
+			"createdAt":"2022-04-26 10:01:06",
+			"images": {
+				"count": 0,
+				"list": []
+			},
+			"metrics": {
+				"hearts": 85,
+				"comments": 11
+			},
+			"requester": {
+				"hasLiked": false,
+				"isAuthor": true,
+				"hasCommented": true,
+				"isAllowed": {
+					"toLike": true
+				}
+			}
+		},
+		{
+			"id": "854474125",
+			"title": "aasd",
+			"content": "The smile on your face, makes me know that you love me",
+			"author": {
+				"id": "uaHHnahsd",
+				"username": "vince",
+				"firstName": "Vince",
+				"location": "General Santos City",
+				"lastName": "Atayde",
+				"profilePhoto": null
+			},
+			"visibility":"public",
+			"createdAt":"2022-04-23 10:01:06",
+			"images": {
+				"count": 0,
+				"list": []
+			},
+			"metrics": {
+				"hearts": 54,
+				"comments": 1
+			},
+			"requester": {
+				"hasLiked": false,
+				"isAuthor": false,
+				"hasCommented": true,
+				"isAllowed": {
+					"toLike": true
+				}
+			}
+		}
+	],
+	"requester": {
+		"metrics": {
+			"hasFollowed": false,
+			"hasLiked": true
+		},
+		"isAllowed": {
+			"toFollow": true,
+			"toLike": true
+		}
+	}
+}
