@@ -61,10 +61,7 @@ class Build {
 
     public static function getProjectRoot()
     {
-        $paths = explode('/',__DIR__);
-        unset($paths[5]);
-        unset($paths[6]);
-        return implode('/',$paths);
+        return APP_ROOT;
     }
 
 }
